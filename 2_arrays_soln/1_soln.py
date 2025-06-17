@@ -18,5 +18,7 @@ Create a list to store these monthly expenses and using that find out,
 """
 
 print("hello World!")
+print("this is my first git experience")
+
 
 

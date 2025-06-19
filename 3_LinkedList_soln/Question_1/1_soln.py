@@ -91,6 +91,15 @@ class LinkedList:
         # raise Exception("No such Value Exists")
 
     def remove_by_value(self, data_match):
+        if self.head is None:
+            print("List is empty")
+            return
+
+            # Handle case where head needs to be removed
+        if self.head.data == data_match:
+            self.head = self.head.next
+            return
+
         obj = self.head
         while obj.next:
             if data_match == obj.next.data:

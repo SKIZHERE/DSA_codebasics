@@ -1,5 +1,3 @@
-from itertools import count
-
 
 class Node:
     def __init__(self, data=None, next=None, prev=None):
@@ -113,7 +111,7 @@ class doubleLinkedList:
 
     def remove_by_value(self, data_match):
         obj = self.head
-        if obj == None:
+        if obj is None:
             print("Empty list")
             return
         while obj:
@@ -134,7 +132,30 @@ class doubleLinkedList:
                 obj.prev.next = obj.next
                 obj.next.prev = obj.prev
                 return
-            print("no such value")
+            obj = obj.next
+        print("no such value")
+
+    def print_forward(self):
+        if self.head is None:
+            print("Linked list is empty")
+            return
+        obj = self.head
+        dllstr = ''
+        while obj:
+            dllstr += str(obj.data) + ' --> ' if obj.next else str(obj.data)
+            obj = obj.next
+        print(dllstr)
+
+    def print_backward(self):
+        obj = self.head
+        while obj.next:
+            obj = obj.next
+        last_obj = obj
+        dllstr = ''
+        while last_obj:
+            dllstr += str(last_obj.data) + ' --> ' if last_obj.prev else str(last_obj.data)
+            last_obj = last_obj.prev
+        print(dllstr)
 
 
 
@@ -157,3 +178,7 @@ if __name__ == "__main__":
     dll.print()
     dll.insert_after_value(53,70)
     dll.print()
+    dll.remove_by_value(2)
+    dll.print()
+    dll.print_forward()
+    dll.print_backward()

@@ -97,9 +97,19 @@ class doubleLinkedList:
                 break
             count += 1
             obj = obj.next
-    def insert_after_value(self,data,value):
-        pass
-
+    def insert_after_value(self,data_match,data):
+        obj = self.head
+        while obj:
+            if data_match == obj.data:
+                node = Node(data, obj.next,obj)
+                if obj.next:
+                    obj.next.prev = node
+                obj.next = node
+                if obj == self.foot:
+                    self.foot = node
+                return
+            obj = obj.next
+        print("no such data in the list")
 
 
 
@@ -118,4 +128,6 @@ if __name__ == "__main__":
     dll.remove_at(2)
     dll.print()
     dll.insert_at(5, 12)
+    dll.print()
+    dll.insert_after_value(53,70)
     dll.print()

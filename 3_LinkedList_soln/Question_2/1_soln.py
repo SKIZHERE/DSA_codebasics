@@ -75,7 +75,6 @@ class doubleLinkedList:
                 if obj.next:
                     obj.next.prev = obj.prev
                 return
-
             obj = obj.next
             count += 1
 

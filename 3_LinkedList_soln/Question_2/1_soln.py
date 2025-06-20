@@ -111,6 +111,32 @@ class doubleLinkedList:
             obj = obj.next
         print("no such data in the list")
 
+    def remove_by_value(self, data_match):
+        obj = self.head
+        if obj == None:
+            print("Empty list")
+            return
+        while obj:
+            if obj.data == data_match:
+                if obj == self.head:
+                    self.head = obj.next
+                    if self.head:
+                        self.head.prev = None
+                    else:
+                        self.foot = None
+                    return
+
+                if obj == self.foot:
+                    self.foot = obj.prev
+                    if self.foot:
+                        self.foot.next = None
+                    return
+                obj.prev.next = obj.next
+                obj.next.prev = obj.prev
+                return
+            print("no such value")
+
+
 
 
 if __name__ == "__main__":

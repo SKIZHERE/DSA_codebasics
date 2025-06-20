@@ -78,6 +78,30 @@ class doubleLinkedList:
             obj = obj.next
             count += 1
 
+    def insert_at(self, index, data): # Reffered soln
+        if index<0 or index > self.get_length():
+            print("Invalid Index")
+            return
+        if index == 0:
+            self.insert_at_beginning(data)
+            return
+
+        count = 0
+        obj = self.head
+        while obj:
+            if count == index - 1:
+                node = Node(data, obj.next, obj)
+                if node.next:
+                    node.next.prev = node
+                obj.next = node
+                break
+            count += 1
+            obj = obj.next
+    def insert_after_value(self,data,value):
+        pass
+
+
+
 
 if __name__ == "__main__":
     dll = doubleLinkedList()
@@ -92,4 +116,6 @@ if __name__ == "__main__":
     dll.print()
     print("length : ",dll.get_length())
     dll.remove_at(2)
+    dll.print()
+    dll.insert_at(5, 12)
     dll.print()

@@ -13,7 +13,7 @@ class HashTable:
     def __setitem__(self, key, value):
         h = self.get_hash(key)
         if self.arr[h] is not None:
-        self.arr[h].append((key,value))
+            self.arr[h].append((key,value))
 
     def __getitem__(self, key):
         h = self.get_hash(key)

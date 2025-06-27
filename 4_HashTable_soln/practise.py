@@ -2,7 +2,7 @@
 class HashTable:
     def __init__(self):
         self.MAX = 10
-        self.arr = [None for i in range (self.MAX)]
+        self.arr = [[] for i in range (self.MAX)]
 
     def get_hash(self, key):
         h = 0
@@ -12,7 +12,13 @@ class HashTable:
 
     def __setitem__(self, key, value):
         h = self.get_hash(key)
-        if self.arr[h] is not None:
+        found = False
+        for i, j in enumerate(self.arr[h]):
+            if len(j) == 2 and j[0]== key:
+                self.arr[h][i] = (key,value)
+                found = True
+                break
+        if not found:
             self.arr[h].append((key,value))
 
     def __getitem__(self, key):

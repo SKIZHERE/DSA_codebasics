@@ -23,19 +23,26 @@ class HashTable:
 
     def __getitem__(self, key):
         h = self.get_hash(key)
-        return self.arr[h]
+        for i in self.arr[h]:
+            if i[0] == key:
+                return i[1]
+
 
     def __delitem__(self, key):
         h = self.get_hash(key)
-        self.arr[h] = None
+        for i, val in enumerate(self.arr[h]):
+            if val[0] == key:
+                del self.arr[h][i]
 
 if __name__ == "__main__":
     t = HashTable()
     t["march 6"] = 130
-    t["march 1"] = 20
+    t["march 6"] = 90
+    t["march 1"] = 30
     t["march 17"] = 20
+    print(t["march 6"])
     print(t["march 1"])
     del t["march 1"]
     print(t["march 1"])
-    print(t["march 6"])
+    print(t["march 17"])
 

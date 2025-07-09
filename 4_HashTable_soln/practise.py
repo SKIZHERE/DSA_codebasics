@@ -37,12 +37,21 @@ class HashTable:
 if __name__ == "__main__":
     t = HashTable()
     t["march 6"] = 130
-    t["march 6"] = 90
-    t["march 1"] = 30
     t["march 17"] = 20
-    print(t["march 6"])
-    print(t["march 1"])
-    del t["march 1"]
+    t["nov 1"] = 1
+    t["march 33"] = 234
+    print(t["dec 1"])
+    t["march 33"] = 999
+    print(t["march 33"])
+    t["april 1"] = 87
+    t["april 2"] = 123
+    t["april 3"] = 234234
+    t["april 4"] = 91
+    t["May 22"] = 4
+    t["May 7"] = 47
+    del t["april 2"]
+    t["Jan 1"] = 0
+    print(t["march 33"])
     print(t["march 1"])
     print(t["march 17"])
 

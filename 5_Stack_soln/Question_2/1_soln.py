@@ -1,6 +1,7 @@
 from collections import deque
 
 
+
 class Stack:
     def __init__(self):
         self.container = deque()
@@ -22,20 +23,22 @@ class Stack:
             new_str += self.pop()
         return new_str
     def is_balanced(self,str):
+        d = {")":"(","}":"{","]":"["}
         for i in str:
-            if i in "([{":
+            if i in d.values():
                 self.push(i)
-            elif i == ")" and self.peek() != "(":
-                return False
-            elif i == "}" and self.peek() != "{":
-                return False
-            elif i == "]" and self.peek() != "[":
-                return False
-        if self.is_empty():
-            return True
-        return False
+            elif i in d.keys():
+                if self.is_empty():
+                    return False
+                elif self.peek() == d[i]:
+                    self.pop()
+        return self.is_empty()
 
 
 if __name__ == '__main__':
     s = Stack()
+    print(s.is_balanced("({a+b})"))
     print(s.is_balanced("))((a+b}{"))
+    print(s.is_balanced("((a+b))"))
+    print(s.is_balanced("))"))
+    print(s.is_balanced("[a+b]*(x+2y)*{gg+kk}"))
